@@ -3,8 +3,15 @@
   <PropertyGroup>
 	  <LangVersion>preview</LangVersion>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp6</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Extentions\ExtensionsEntityFrameworkCore.cs" />
+    <Compile Remove="Extentions\ExtensionsLinq2Db.cs" />
+    <Compile Remove="Extentions\ExtentionsDataTable.cs" />
+    <Compile Remove="GlobalUsings.cs" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="morelinq" Version="3.3.2" />

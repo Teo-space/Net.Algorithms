@@ -1,6 +1,9 @@
 ﻿using GraphAlgos;
+using Net.Algorithms.HeapAlgs.BinaryHeap;
 using SearchAlgos;
 using SortAlgs;
+using System;
+using System.Collections.Generic;
 
 namespace Net.Algorithms
 {
@@ -8,21 +11,42 @@ namespace Net.Algorithms
 	{
 		static void Main(string[] args)
 		{
-			BinarySearch.Run(1000, 678);
-			print();
-			print();
+
+			Run<BinarySearch>();
+			printLines(3);
+
 
 			//SortingAlgosComparision
-			new QuickSort().Run(1000);
-			new InsertionSort().Run(1000);
-			new BubleSort().Run(1000);
-			print();
-			print();
+			Create<QuickSort>()
+				.Run(10000);
+			Create <InsertionSort>()
+				.Run(10000);
+			Create <BubleSort>()
+				.Run(10000);
+			printLines(3);
+
 
 			//GraphAlgos
-			BreadthFirstSearch.Run();
-			DepthFirstSearch.Run();
+			Run<BreadthFirstSearch>();
+			printLines(3);
+			Run<DepthFirstSearch>();
+			printLines(3);
+
+
+			Run<BinaryHeapTest>();
+			printLines(3);
 
 		}
 	}
+
+
+
+
+
+
+
+
+
+
+
 }

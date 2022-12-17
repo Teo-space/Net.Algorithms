@@ -1,22 +1,21 @@
 ﻿namespace GraphAlgos
 {
-	internal class DepthFirstSearch : Template
+	internal class DepthFirstSearch : Template, iRunnable
 	{
 		static List<int> GraphCells = new List<int>() { 1, 11, 12, 13, 21, 22, 23, 31, 32, 33 };
 		static readonly int MaxValue = GraphCells.Max() + 1;
-		static bool[,] Edges = new bool[MaxValue, MaxValue];
-
-		static int startV = 1;
-		static int Vertice = startV;
-		static int EndG = 32;
-
-		static bool[] CheckedVerticles = new bool[MaxValue];
-		static bool[] EnqueuedVerticles = new bool[MaxValue];
-		//static int[] Paths = new int[MaxValue];
-		static List<int>[] Paths = new List<int>[MaxValue];
+		static readonly int startV = 1;
+		static readonly int EndG = 32;
 
 
-		static DepthFirstSearch()
+		int Vertice = startV;
+		bool[,] Edges = new bool[MaxValue, MaxValue];
+		bool[] CheckedVerticles = new bool[MaxValue];
+		bool[] EnqueuedVerticles = new bool[MaxValue];
+		List<int>[] Paths = new List<int>[MaxValue];
+
+
+		public DepthFirstSearch()
 		{
 			//Стартовая вершина проверена
 			CheckedVerticles[Vertice] = true;
@@ -24,7 +23,7 @@
 
 			InitEdges();
 		}
-		static void InitEdges()
+		void InitEdges()
 		{
 			Edges[1, 11] = true;
 			Edges[1, 12] = true;
@@ -53,9 +52,9 @@
 			Edges[22, 1] = true;
 		}
 
-		static Queue<int> gfs = new Queue<int>();
+		Queue<int> gfs = new Queue<int>();
 
-		static IEnumerable<int> GetConnectedVertices(int v)
+		IEnumerable<int> GetConnectedVertices(int v)
 		{
 			for (int i = 0; i < MaxValue; i++)
 			{//Выбираем где есть связь
@@ -63,15 +62,15 @@
 			}
 		}
 
-		static void AddToPaths(int index, int verticle)
+		void AddToPaths(int index, int verticle)
 		{
 			if (Paths[index] == null) Paths[index] = new List<int>();
 			Paths[index].Add(verticle);
 		}
 
-		public static void Run()
+		public void Run()
 		{
-			print("Depth-first search", ConsoleColor.Yellow);
+			print("Depth-first search", ConsoleColor.DarkMagenta);
 			int Parent;
 			do
 			{

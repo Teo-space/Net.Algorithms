@@ -1,13 +1,16 @@
 ﻿namespace SearchAlgos
 {
-	internal class BinarySearch : Template
+	internal class BinarySearch : Template, iRunnable
 	{
 
-		public static void Run(int range, int number)
+		public void Run()
 		{
+			int number = 741;
+			int ArrSize = 1000;
+
 			print("BinarySearch", ConsoleColor.Green);
 
-			var list = Enumerable.Range(0, range).ToList();
+			var list = Enumerable.Range(0, ArrSize).ToList();
 
 			print($"Search({number}) : {Search(list, number)}", ConsoleColor.Green);
 		}
